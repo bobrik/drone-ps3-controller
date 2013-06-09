@@ -6,7 +6,7 @@ Control your ar.drone with ps3 controller.
 ### Installation
 
 ```
-npm drone-ps3-controller
+npm install drone-ps3-controller
 ```
 
 ### Running
