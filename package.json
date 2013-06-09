@@ -1,0 +1,30 @@
+{
+  "name": "drone-ps3-controller",
+  "version": "0.1.0",
+  "description": "Control your ar.drone with ps3 controller.",
+  "main": "index.js",
+  "dependencies": {
+    "ar-drone": "~0.1.0",
+    "ps3.js": "~0.0.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bobrik/drone-ps3-controller.git"
+  },
+  "keywords": [
+    "ps3",
+    "controller",
+    "gamepad",
+    "hid",
+    "ar.drone",
+    "ardrone",
+    "drone"
+  ],
+  "author": "Ian Babrou <ibobrik@gmail.com> (http://bobrik.name/)",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
