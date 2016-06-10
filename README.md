@@ -12,7 +12,7 @@ npm install drone-ps3-controller
 ### Running
 
 ```
-cd drone-ps3-controller
+cd node_module/drone-ps3-controller
 npm start
 ```
 
