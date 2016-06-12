@@ -21,15 +21,53 @@
     console.log("  O: Takeoff");
     console.log("  X: Land");
 
+    var flying   = false,
+        hovering = false,
+        mode = 3, // RC mode : http://blog.milleniumrc.fr/wp-content/uploads/2011/02/Nl30689.jpg
+        selectedValue = 0;
+
+    /**
+    * Toggle RC mode between 3 and 2
+    */
+    function toggleMode(){
+        if(mode == 3){
+            mode = 2;
+            console.log("RC mode : 2");
+        }else{
+            mode = 3;
+            console.log("RC mode : 3");
+        }
+    }
+
+    /**
+    * Set RC mode
+    */ 
+    function setRcMode(){
+        if(rdata[2] == 1 && rdata[2] != selectedValue){
+            //'select' pushed
+            toggleMode();
+            selectedValue = 1;
+        }
+        else if(rdata[2] == 0){
+            selectedValue = 0;   
+        }
+    }
+
     setInterval(function() {
+        setRcMode();
+
         on("x", rdata[24]);
         on("o", rdata[23]);
-        on("left", {x: rdata[6], y: rdata[7]});
-        on("right", {x: rdata[8], y: rdata[9]});
+
+        if(mode == 3){
+            on("left", {x: rdata[6], y: rdata[7]});
+            on("right", {x: rdata[8], y: rdata[9]});    
+        }else{
+            on("left", {x: rdata[8], y: rdata[9]});
+            on("right", {x: rdata[6], y: rdata[7]});    
+        }
+        
     }, 50);
-    
-    var flying   = false,
-        hovering = false;
 
     function on(type, value) {
         if (type == "x" && value > 50) {
